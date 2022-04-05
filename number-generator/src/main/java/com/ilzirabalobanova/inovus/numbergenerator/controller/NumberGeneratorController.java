@@ -18,8 +18,7 @@ public class NumberGeneratorController {
 
     @GetMapping("/random")
     public String random() {
-        String number = generatorService.generateRandomNumber();
-        return "random-number-view";
+        return generatorService.generateRandomNumber();
     }
 
     @GetMapping("/next")

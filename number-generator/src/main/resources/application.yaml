@@ -5,7 +5,19 @@ spring:
     password: password
     driverClassName: org.h2.Driver
     jpa:
-      spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+      database-platform: org.hibernate.dialect.H2Dialect
+      hibernate:
+        ddl-auto: update
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
 
 server:
-  port : 8081
+  port : 8082
