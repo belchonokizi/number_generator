@@ -20,12 +20,16 @@ public class NextNumberGenerator {
 
     public String generateNextNumber(List<Character> list, String constant) {
         String lastNumberValue = generatorRepository.findLast().getNumberValue();
-        String newNumericPart = increaseNumeric(lastNumberValue);
-        String newLetterPart = generateNewLetterPart(newNumericPart, lastNumberValue, list);
-        StringBuilder builder = new StringBuilder();
-        builder.append(lastNumberValue, 0, 1).append(newNumericPart).append(newLetterPart).append(constant);
-        generatorRepository.saveNumber(new Number(builder.toString()));
-        return builder.toString();
+        String resultString;
+        do {
+            String newNumericPart = increaseNumeric(lastNumberValue);
+            String newLetterPart = generateNewLetterPart(newNumericPart, lastNumberValue, list);
+            StringBuilder builder = new StringBuilder();
+            resultString = builder.append(lastNumberValue, 0, 1).append(newNumericPart)
+                    .append(newLetterPart).append(constant).toString();
+        } while (generatorRepository.isNumberExists(resultString));
+        generatorRepository.saveNumber(new Number(resultString));
+        return resultString;
     }
 
     private String increaseNumeric(String number) {
@@ -45,9 +49,9 @@ public class NextNumberGenerator {
         StringBuilder sb;
         if (newNumericPart.equals("000")) {
             sb = new StringBuilder();
-            if (numberValue.charAt(5) == 'X') {
+            if (numberValue.charAt(5) == 'Х') {
                 char newValue = findNextChar(newList, numberValue.charAt(4));
-                sb.append(newValue).append('A');
+                sb.append(newValue).append('А');
             } else {
                 char newValue = findNextChar(newList, numberValue.charAt(5));
                 sb.append(numberValue.charAt(4)).append(newValue);
