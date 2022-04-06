@@ -10,7 +10,7 @@ import javax.persistence.EntityManager;
 
 @Repository
 public class NumberGeneratorRepository implements INumberGeneratorRepository {
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     @Autowired
     public NumberGeneratorRepository(EntityManager entityManager) {
