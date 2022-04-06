@@ -7,4 +7,6 @@ public interface INumberGeneratorRepository {
     boolean isNumberExists(String number);
 
     void saveNumber(Number number);
+
+    Number findLast();
 }

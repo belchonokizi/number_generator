@@ -23,8 +23,7 @@ public class NumberGeneratorController {
 
     @GetMapping("/next")
     public String next() {
-        String number = generatorService.generateNextNumber();
-        return "random-number-view";
+        return generatorService.generateNextNumber();
     }
 
 }

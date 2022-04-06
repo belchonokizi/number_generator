@@ -27,4 +27,10 @@ public class NumberGeneratorRepository implements INumberGeneratorRepository {
         Session session = entityManager.unwrap(Session.class);
         session.saveOrUpdate(number);
     }
+
+    @Override
+    public Number findLast() {
+        return (Number) entityManager.createQuery("select n from Number n " +
+                "where n.id = (select MAX(id) from Number)").getSingleResult();
+    }
 }
