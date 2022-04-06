@@ -17,7 +17,7 @@ public class Number {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "number_value", nullable = false, unique = true, length = 14)
+    @Column(name = "number_value", nullable = false, unique = true)
     private String numberValue;
 
     public Number(String numberValue) {
