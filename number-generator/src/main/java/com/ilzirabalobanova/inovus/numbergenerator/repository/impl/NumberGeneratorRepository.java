@@ -1,6 +1,7 @@
-package com.ilzirabalobanova.inovus.numbergenerator.repository;
+package com.ilzirabalobanova.inovus.numbergenerator.repository.impl;
 
 import com.ilzirabalobanova.inovus.numbergenerator.entity.Number;
+import com.ilzirabalobanova.inovus.numbergenerator.repository.INumberGeneratorRepository;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
